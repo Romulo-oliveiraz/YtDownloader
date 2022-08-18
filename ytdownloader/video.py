@@ -17,33 +17,23 @@ def down_video(url, res1):
 
         #Pega o video na melhor qualidade disponivel.
         yt = YouTube(link, on_progress_callback=on_progress)
+        streams = set()
 
+        for stream in yt.streams.filter(type="video"):  # Only look for video streams to avoid None values
+            streams.add(stream.resolution)
         #faz a verificação da opção do usuario.
-        video = yt.streams.filter(res=resolução).first()
+        if res1 not in streams or res1 in ("1080p", '2160p', '1440p'):
+            popup('A resolução escolhida não está disponivel, será baixada a maior resolução!')
+            video = yt.streams.get_highest_resolution()
+        else:   
+            video = yt.streams.filter(res=resolução).first()
 
         #baixa o video em .mp4 na pasta videos
         video.download(cwd+"\\videos")
 
         popup('O video foi baixado com sucesso!')
     except:
-            popup('O URL digitado é invalido!')
+        popup('O URL digitado é invalido!')
 
-def resolution():  
-    op = int(input(Fore.MAGENTA+'Qual resolução você deseja baixar?'+Fore.RESET))
-    while op not in (1,2,3,4,5,6):
-        print(Fore.RED+Style.BRIGHT+'Valor invalido!!'+Fore.RESET+Style.RESET_ALL)
-        op = int(input(Fore.MAGENTA+'Qual resolução você deseja baixar?'+Fore.RESET))
-    return op
-
-def mostra_resolution():
-    print(Fore.GREEN+"""OPÇÕES:
-    [ 1 ] = [Melhor resolução possivel]
-    [ 2 ] = [720p]
-    [ 3 ] = [480p]
-    [ 4 ] = [360p]
-    [ 5 ] = [240p]
-    [ 6 ] = [144p]
-    """+Fore.RESET)
-
-if __name__ == '__main__':
-    down_video()
+#if __name__ == '__main__':
+down_video('https://www.youtube.com/watch?v=wqh8Z59rMI4', res1='1080p')
