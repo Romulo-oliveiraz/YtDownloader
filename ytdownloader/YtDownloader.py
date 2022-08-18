@@ -2,7 +2,7 @@
 import main
 import PySimpleGUI as sg
 def tela_inicial():
-    sg.theme('Dark2')   # Add a little color to your windows
+    sg.theme('Dark')   # Add a little color to your windows
     layout = [  
         [sg.Text('Selecione o tipo de música que deseja baixar:')],
         [sg.Checkbox('Video', key='video'), sg.Checkbox('Música', key='musica'), sg.Checkbox('Playlist', key='playlist')],
@@ -12,7 +12,7 @@ def tela_inicial():
     return sg.Window('Inicial', layout=layout, finalize=True)
 
 def tela_video():
-    sg.theme('Dark2')   # Add a little color to your windows
+    sg.theme('Dark')   # Add a little color to your windows
     layout = [  
         [sg.Text('Deseja baixar o video em qual resolução?')],
         [sg.Checkbox('720p', key='720p'), 
