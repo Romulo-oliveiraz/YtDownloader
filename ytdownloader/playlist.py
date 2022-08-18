@@ -2,11 +2,8 @@ def playlist_download(url):
     from colorama import Fore, Style
     from PySimpleGUI import popup
     try:
-        from time import sleep
         from pytube import Playlist
         import os
-
-        #url = str(input(Fore.MAGENTA+'Digite o URL da PlayList:'+Fore.RESET))
 
         p = Playlist(url)
 

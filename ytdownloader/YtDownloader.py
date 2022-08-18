@@ -1,5 +1,6 @@
-
-import main
+from musica import music
+from playlist import playlist_download
+from video import down_video
 import PySimpleGUI as sg
 def tela_inicial():
     sg.theme('Dark')   # Add a little color to your windows
@@ -43,10 +44,10 @@ while True:
     if window == janela1 and event == 'Baixar':
         
         if values['musica']:
-            main.music(values['url'])
+            music(values['url'])
 
         elif values['playlist']:
-            main.playlist_download(values['url'])
+            playlist_download(values['url'])
 
         if values['video'] == True:
             janela2 = tela_video()
@@ -60,19 +61,19 @@ while True:
                     flag = voltar(flag)
                 if event2 == 'video down':
                     if values2['720p'] == True:
-                        main.down_video(values['url'], "720p")
+                        down_video(values['url'], "720p")
                         
                     elif values2['480p'] == True:
-                        main.down_video(values['url'], '480p')
+                        down_video(values['url'], '480p')
                         
                     elif values2['360p'] == True:
-                        main.down_video(values['url'], '360p')
+                        down_video(values['url'], '360p')
                         
                     elif values2['240p'] == True:
-                        main.down_video(values['url'], '240p')
+                        down_video(values['url'], '240p')
                 
                     elif values2['144p'] == True:
-                        main.down_video(values['url'], '144p')
+                        down_video(values['url'], '144p')
                     flag = voltar(flag)
     elif window == janela1 and event == 'sair':
         break                                      

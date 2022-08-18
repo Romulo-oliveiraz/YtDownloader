@@ -2,13 +2,10 @@ from colorama import Fore, Style
 from PySimpleGUI import popup
 def down_video(url, res1):
     try:
-        from time import sleep
         from pytube.cli import on_progress
         from pytube import YouTube
         import os
-
-        #url = str(input(Fore.MAGENTA+'Digite o URL do video:'+Fore.RESET))
-
+ 
         cwd = os.getcwd()
 
         #pega a url do video.
@@ -22,7 +19,7 @@ def down_video(url, res1):
         for stream in yt.streams.filter(type="video"):  # Only look for video streams to avoid None values
             streams.add(stream.resolution)
         #faz a verificação da opção do usuario.
-        if res1 not in streams or res1 in ("1080p", '2160p', '1440p'):
+        if res1 not in streams:
             popup('A resolução escolhida não está disponivel, será baixada a maior resolução!')
             video = yt.streams.get_highest_resolution()
         else:   
@@ -35,5 +32,5 @@ def down_video(url, res1):
     except:
         popup('O URL digitado é invalido!')
 
-#if __name__ == '__main__':
-down_video('https://www.youtube.com/watch?v=wqh8Z59rMI4', res1='1080p')
+if __name__ == '__main__':
+    down_video()

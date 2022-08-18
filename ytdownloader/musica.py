@@ -1,6 +1,3 @@
-from ctypes import WinError
-
-
 def music(url):
     from colorama import Fore, Style
     from PySimpleGUI import popup
