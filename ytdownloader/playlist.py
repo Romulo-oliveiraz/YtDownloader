@@ -10,8 +10,6 @@ def playlist_download(url):
 
         #pega o nome da playlist é coloca na variavel
         nome_pasta = f"\playlist\{p.title}"
-    
-        popup(f'Baixando a playlist: {p.title}... Aguarde!')
 
         for video1 in p.videos:
             video = video1.streams.get_audio_only()
@@ -23,9 +21,8 @@ def playlist_download(url):
             convert_to_mp3(arquivo_baixado)
             
             # print(Fore.LIGHTBLUE_EX+Style.BRIGHT+f'A música {video1.title} foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
-        popup(f'A playlist foi {p.title} baixada com sucesso!')
+        popup(f'A playlist {p.title} foi baixada com sucesso!')
     except:
-        
         popup('O URL digitado é invalido ou não é uma PlayList!')
 def convert_to_mp3(arquivo_baixado):
 
