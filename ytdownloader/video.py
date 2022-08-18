@@ -1,4 +1,3 @@
-from colorama import Fore, Style
 from PySimpleGUI import popup
 def down_video(url, res1):
     try:

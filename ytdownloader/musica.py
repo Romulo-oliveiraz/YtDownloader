@@ -1,5 +1,4 @@
 def music(url):
-    from colorama import Fore, Style
     from PySimpleGUI import popup
     try:
         from pytube.cli import on_progress

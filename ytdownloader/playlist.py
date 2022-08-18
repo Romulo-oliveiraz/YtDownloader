@@ -1,5 +1,4 @@
 def playlist_download(url):
-    from colorama import Fore, Style
     from PySimpleGUI import popup
     try:
         from pytube import Playlist
@@ -12,7 +11,7 @@ def playlist_download(url):
         #pega o nome da playlist é coloca na variavel
         nome_pasta = f"\playlist\{p.title}"
     
-        print(Fore.LIGHTCYAN_EX+Style.BRIGHT+f'Baixando a playlist: {p.title}'+Fore.RESET+Style.RESET_ALL)
+        popup(f'Baixando a playlist: {p.title}... Aguarde!')
 
         for video1 in p.videos:
             video = video1.streams.get_audio_only()
@@ -23,7 +22,7 @@ def playlist_download(url):
             #seleciona a musica em .mp4 e converte ela para .mp3
             convert_to_mp3(arquivo_baixado)
             
-            print(Fore.LIGHTBLUE_EX+Style.BRIGHT+f'A música {video1.title} foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
+            # print(Fore.LIGHTBLUE_EX+Style.BRIGHT+f'A música {video1.title} foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
         popup(f'A playlist foi {p.title} baixada com sucesso!')
     except:
         
