@@ -23,9 +23,9 @@ def music(url):
         arquivo_baixado = video.download(cwd+"\musicas")
 
         #seleciona a musica em .mp4 e converte ela para .mp3
-        #define duas variaveis com o nome do arquivo
         convert_to_mp3(arquivo_baixado)
-        print(Fore.LIGHTBLUE_EX+Style.BRIGHT+'A música foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
+        popup('A música foi baixada com sucesso!')
+
     except FileExistsError:
         popup('Essa música já foi baixada!')
         os.remove(arquivo_baixado)
@@ -40,8 +40,10 @@ def convert_to_mp3(arquivo_baixado):
     import os
     nome, ext = os.path.splitext(arquivo_baixado)
     #renomeia o arquivo colocando o .mp3 na frente
+
     novo_arquivo = nome + '.mp3'
     #renomeia o arquivo os.rename(<Atual nome do arquivo>, <Novo nome do arquivo.>)
+
     os.rename(arquivo_baixado, novo_arquivo)
 
 

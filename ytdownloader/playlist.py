@@ -27,7 +27,7 @@ def playlist_download(url):
             convert_to_mp3(arquivo_baixado)
             
             print(Fore.LIGHTBLUE_EX+Style.BRIGHT+f'A música {video1.title} foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
-
+        popup(f'A playlist foi {p.title} baixada com sucesso!')
     except:
         
         popup('O URL digitado é invalido ou não é uma PlayList!')
@@ -35,8 +35,10 @@ def convert_to_mp3(arquivo_baixado):
 
     import os
     nome, ext = os.path.splitext(arquivo_baixado)
+
     #renomeia o arquivo colocando o .mp3 na frente
     novo_arquivo = nome + '.mp3'
+
     #renomeia o arquivo os.rename(<Atual nome do arquivo>, <Novo nome do arquivo.>)
     os.rename(arquivo_baixado, novo_arquivo)
 
