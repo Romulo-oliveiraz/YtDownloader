@@ -1,3 +1,6 @@
+from ctypes import WinError
+
+
 def music(url):
     from colorama import Fore, Style
     from PySimpleGUI import popup
@@ -23,10 +26,13 @@ def music(url):
         #define duas variaveis com o nome do arquivo
         convert_to_mp3(arquivo_baixado)
         print(Fore.LIGHTBLUE_EX+Style.BRIGHT+'A música foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
-        
-
+    except FileExistsError:
+        popup('Essa música já foi baixada!')
+        os.remove(arquivo_baixado)
     except:
-        popup('O URL digitado é invalido, verifique se o video está disponivel!')
+        popup('O URL digitado é invalido, verifique se o video está disponivel!')   
+
+    
 
 ##########################################
 def convert_to_mp3(arquivo_baixado):

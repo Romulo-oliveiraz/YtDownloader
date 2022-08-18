@@ -30,7 +30,6 @@ def down_video(url, res1):
         video.download(cwd+"\\videos")
 
         print(Fore.LIGHTBLUE_EX+Style.BRIGHT+'O video foi baixado com sucesso!'+Fore.RESET+Style.RESET_ALL)
-        sleep(5)
     except:
             popup('O URL digitado é invalido!')
 

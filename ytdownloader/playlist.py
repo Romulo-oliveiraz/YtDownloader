@@ -28,7 +28,6 @@ def playlist_download(url):
             
             print(Fore.LIGHTBLUE_EX+Style.BRIGHT+f'A música {video1.title} foi baixada com sucesso!'+Fore.RESET+Style.RESET_ALL)
 
-            sleep(5)
     except:
         
         popup('O URL digitado é invalido ou não é uma PlayList!')
